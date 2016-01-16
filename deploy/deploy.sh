@@ -10,7 +10,8 @@ if [ $? != 0 ]; then
     quit
 fi
 
-mv -vrf ./!(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT
+shopt -s extglob
+mv -vfR !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not move files'
