@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export RESULT_DIR=build_$TRAVIS_BUILD_NUMBER
+export RESULT_DIR=admin.server.$TRAVIS_BUILD_NUMBER
 export SSHPASS=$SSH_PASS
 
 echo "Starting deployment"
