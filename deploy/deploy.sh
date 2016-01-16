@@ -34,10 +34,10 @@ if [ $? != 0 ]; then
     exit
 fi
 
-npm = "type cd; cd '$(echo $WEB_PATH)'; echo $PWD; whoami; tar -xvzf ./package.tgz; rm ./package.tgz; source ./build_$TRAVIS_COMMIT/deploy/deploy.sh"
-
 sshpass -e ssh $SSH_USER@$SSH_IP << EOF
+bash;
 type cd;
+cd $WEB_PATH;
 echo $PWD;
 whoami;
 tar -xvzf ./package.tgz;
