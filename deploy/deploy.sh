@@ -4,6 +4,7 @@ export RESULT_DIR=admin.server.$TRAVIS_BUILD_NUMBER
 export SSHPASS=$SSH_PASS
 export ARCH_NAME=server.package.tgz
 export SYMLINK_NAME=admin.server
+export PROCESS_NAME=admin.server
 
 echo "Starting deploy"
 
@@ -58,6 +59,7 @@ cd ..
 rm -dRf $SYMLINK_NAME
 ln -ds $RESULT_DIR ./$SYMLINK_NAME
 cd ./$SYMLINK_NAME
-pm2 stop admin.server
-pm2 start server.js --name="admin.server"
+pm2 stop $PROCESS_NAME
+pm2 delete $PROCESS_NAME
+pm2 start server.js --name="$PROCESS_NAME"
 EOF
