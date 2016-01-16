@@ -34,4 +34,4 @@ if [ $? != 0 ]; then
     exit
 fi
 
-sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_IP:$WEB_PATH 'echo $PWD; whoami; tar -xvzf ./package.tgz; rm ./package.tgz; source ./build_$TRAVIS_COMMIT/deploy/deploy.sh'
+sshpass -e ssh $SSH_USER@$SSH_IP 'сd $WEB_PATH; echo $PWD; whoami; tar -xvzf ./package.tgz; rm ./package.tgz; source ./build_$TRAVIS_COMMIT/deploy/deploy.sh'
