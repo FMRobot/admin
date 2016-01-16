@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+echo "Starting deployment"
+echo "Creating archive"
 echo $PWD
-mkdir build
-mv * build
-tar -czf package.tgz build
+mkdir build$TRAVIS_COMMIT
+mv * build$TRAVIS_COMMIT
+tar -czf package.tgz build$TRAVIS_COMMIT
 ls
 export SSHPASS=$SSH_PASS
 sshpass -e scp package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
