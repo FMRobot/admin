@@ -48,5 +48,7 @@ tar -xzf ./package.tgz -C ./;
 echo 'Cleaning';
 rm ./package.tgz;
 echo 'Deploying';
-source ./$RESULT_DIR/deploy/server.sh;
+cd $RESULT_DIR;
+pwd;
+source ./deploy/server.sh;
 EOF
