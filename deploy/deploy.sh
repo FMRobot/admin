@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+
+export RESULT_DIR=build_$TRAVIS_BUILD_NUMBER
+export SSHPASS=$SSH_PASS
+
 echo "Starting deployment"
-echo "Creating archive"
+echo
 echo ""
 
 mkdir build_$TRAVIS_COMMIT
@@ -25,8 +29,6 @@ if [ $? != 0 ]; then
     exit
 fi
 
-export RESULT_DIR=build_$TRAVIS_COMMIT
-export SSHPASS=$SSH_PASS
 sshpass -e scp -o StrictHostKeyChecking=no package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
 
 if [ $? != 0 ]; then
@@ -36,19 +38,24 @@ if [ $? != 0 ]; then
 fi
 
 sshpass -e ssh $SSH_USER@$SSH_IP << EOF
-echo 'PRODUCTION SERVER INFO';
-pwd;
-echo '';
 cd $WEB_PATH;
-pwd;
-whoami;
-
+mkdir -p admin.server;
 echo 'Extracting';
 tar -xzf ./package.tgz -C ./;
 echo 'Cleaning';
 rm ./package.tgz;
 echo 'Deploying';
 cd $RESULT_DIR;
-pwd;
-source ./deploy/server.sh;
+npm install;
+if [ $? != 0 ]; then
+    echo 'NPM INSTALL FAILED';
+    quit;
+fi
+cd ..
+rm -dRf admin.server
+ln -ds $RESULT_DIR ./admin.server
+cd admin.server
+pm2
+pm2 start server.js --name="admin.server"
+pm2 stop admin.server
 EOF
