@@ -3,7 +3,7 @@ echo "Starting deployment"
 echo "Creating archive"
 echo ""
 
-mkdir build$TRAVIS_COMMIT
+mkdir build_$TRAVIS_COMMIT
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not create folder'
@@ -11,14 +11,14 @@ if [ $? != 0 ]; then
 fi
 
 shopt -s extglob
-mv -vf !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT/
+mv -vf !(build_$TRAVIS_COMMIT) ./build_$TRAVIS_COMMIT/
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not move files'
     exit
 fi
 
-tar -czf package.tgz build$TRAVIS_COMMIT
+tar -czf package.tgz build_$TRAVIS_COMMIT
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not create archive'
@@ -33,3 +33,5 @@ if [ $? != 0 ]; then
     echo 'Can not upload files'
     exit
 fi
+
+sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_IP:$WEB_PATH 'echo $PWD; whoami; tar -xvzf ./package.tgz; rm ./package.tgz; source ./build_$TRAVIS_COMMIT/deploy/deploy.sh'
