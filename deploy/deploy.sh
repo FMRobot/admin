@@ -7,7 +7,7 @@ echo "Starting deployment"
 echo
 echo ""
 
-mkdir build_$TRAVIS_COMMIT
+mkdir $RESULT_DIR
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not create folder'
@@ -15,14 +15,14 @@ if [ $? != 0 ]; then
 fi
 
 shopt -s extglob
-mv -vf !(build_$TRAVIS_COMMIT) ./build_$TRAVIS_COMMIT/
+mv -vf !($RESULT_DIR) ./$RESULT_DIR
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not move files'
     exit
 fi
 
-tar -czf package.tgz build_$TRAVIS_COMMIT
+tar -czf package.tgz $RESULT_DIR
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not create archive'
