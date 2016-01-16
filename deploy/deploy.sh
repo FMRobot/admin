@@ -26,7 +26,8 @@ if [ $? != 0 ]; then
 fi
 
 export SSHPASS=$SSH_PASS
-sshpass -e scp package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
+sshpass -e scp -o StrictHostKeyChecking=no package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
+
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not upload files'
