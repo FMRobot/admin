@@ -4,16 +4,10 @@ branches:
   only:
   - server
 
-before_install: true
 install: true
-before_script: true
 script: true
-after_failure: true
-after_success: true
 before_deploy: chmod +x ./deploy/deploy.sh
 deploy: ./deploy/deploy.sh
-after_deploy: true
-after_script: true
 
 env:
   global:
