@@ -4,7 +4,6 @@ branches:
   only:
   - server
 
-install: true
 before_deploy: chmod +x ./deploy/deploy.sh
 deploy: ./deploy/deploy.sh
 
