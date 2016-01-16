@@ -21,6 +21,7 @@ app.use(function(req, res, next) {
     }
     res.status(401).end();
 });
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -56,7 +57,7 @@ app.get('/', function(req, res, next) {
         let uuid = require('node-uuid'),
             state = uuid.v4(),
             url = 'https://github.com/login/oauth/authorize',
-            client_id = process.env.APP_OPEN,
+            client_id = process.env.APP_PUBLIC,
             redirect_uri = 'http://admin.frontender.info/',
             scope = 'read:org';
 
@@ -81,7 +82,7 @@ app.get('/', function(req, res, next) {
                 'Accept': 'application/json'
             },
             form: {
-                client_id: process.env.APP_OPEN,
+                client_id: process.env.APP_PUBLIC,
                 client_secret: process.env.APP_SECRET,
                 code: req.query.code,
                 state: req.query.state

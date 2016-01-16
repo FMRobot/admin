@@ -45,6 +45,10 @@ tar -xzf ./package.tgz -C ./;
 echo 'Cleaning';
 rm ./package.tgz;
 echo 'Deploying';
+if [ ! -f ".env" ]; then
+    echo APP_SECRET=$APP_SECRET >> .env;
+    echo APP_PUBLIC=$APP_PUBLIC >> .env;
+fi
 cd $RESULT_DIR;
 npm install;
 if [ $? != 0 ]; then
@@ -55,7 +59,6 @@ cd ..
 rm -dRf admin.server
 ln -ds $RESULT_DIR ./admin.server
 cd admin.server
-pm2
-pm2 start server.js --name="admin.server"
 pm2 stop admin.server
+pm2 start server.js --name="admin.server"
 EOF
