@@ -1,11 +1,29 @@
 #!/usr/bin/env bash
 echo "Starting deployment"
 echo "Creating archive"
-echo $PWD
+echo "\n"
+
 mkdir build$TRAVIS_COMMIT
-mv * build$TRAVIS_COMMIT
+if [ $? != 0 ]; then
+    echo 'Can not create folder\n'
+    quit
+fi
+
+mv -v ./* ./build$TRAVIS_COMMIT
+if [ $? != 0 ]; then
+    echo 'Can not move files\n'
+    quit
+fi
+
 tar -czf package.tgz build$TRAVIS_COMMIT
-ls
+if [ $? != 0 ]; then
+    echo 'Can not create archive\n'
+    quit
+fi
+
 export SSHPASS=$SSH_PASS
 sshpass -e scp package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
-sshpass -e ssh $SSH_USER@$SSH_IP $WEB_PATH/build/deploy/deploy.sh
+if [ $? != 0 ]; then
+    echo 'Can not upload files\n'
+    quit
+fi
