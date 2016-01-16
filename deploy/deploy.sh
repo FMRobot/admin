@@ -38,9 +38,9 @@ fi
 sshpass -e ssh $SSH_USER@$SSH_IP << EOF
 echo 'PRODUCTION SERVER INFO';
 echo '';
-type cd;
+pwd;
 cd $WEB_PATH;
-echo $PWD;
+pwd;
 whoami;
 
 echo 'Extracting';
@@ -48,5 +48,5 @@ tar -xzf ./package.tgz -C ./;
 echo 'Cleaning';
 rm ./package.tgz;
 echo 'Deploying';
-source ./$RESULT_DIR/deploy/deploy.sh;
+source ./$RESULT_DIR/deploy/server.sh;
 EOF
