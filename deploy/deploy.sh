@@ -3,7 +3,7 @@ echo "Starting deployment"
 echo "Creating archive"
 echo ""
 
-mkdir bxuild$TRAVIS_COMMIT
+mkdir build$TRAVIS_COMMIT
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not create folder'
@@ -11,7 +11,7 @@ if [ $? != 0 ]; then
 fi
 
 shopt -s extglob
-mv -vf !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT
+mv -vf !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT/
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not move files'
