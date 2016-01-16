@@ -1,24 +1,27 @@
 {
-  "name": "FMAServer",
-  "version": "1.0.0",
-  "description": "Frontend Magazine Server",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.14.1",
-    "cookie-parser": "^1.4.0",
-    "dotenv": "^1.2.0",
-    "express": "^4.13.3",
-    "express-session": "^1.12.1",
-    "github": "^0.2.4",
-    "node-uuid": "^1.4.7",
-    "octonode": "^0.7.4",
-    "passport": "^0.3.2",
-    "request": "^2.67.0",
-    "serve-static": "^1.10.0"
-  }
+    "name": "FMAServer",
+    "version": "1.0.0",
+    "description": "Frontend Magazine Administration Server",
+    "main": "server.js",
+    "scripts": {
+        "test": "exit 0"
+    },
+    "author": "Anton Nemtsev",
+    "license": "UNLICENSED",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FMRobot/admin.git"
+    },
+    "dependencies": {
+        "body-parser": "^1.14.1",
+        "cookie-parser": "^1.4.0",
+        "dotenv": "^1.2.0",
+        "express": "^4.13.3",
+        "express-session": "^1.12.1",
+        "github": "^0.2.4",
+        "node-uuid": "^1.4.7",
+        "octonode": "^0.7.4",
+        "request": "^2.67.0",
+        "serve-static": "^1.10.0"
+    }
 }
