@@ -25,6 +25,7 @@ if [ $? != 0 ]; then
     exit
 fi
 
+export RESULT_DIR=build_$TRAVIS_COMMIT
 export SSHPASS=$SSH_PASS
 sshpass -e scp -o StrictHostKeyChecking=no package.tgz $SSH_USER@$SSH_IP:$WEB_PATH
 
@@ -35,12 +36,17 @@ if [ $? != 0 ]; then
 fi
 
 sshpass -e ssh $SSH_USER@$SSH_IP << EOF
-bash;
+echo 'PRODUCTION SERVER INFO';
+echo '';
 type cd;
 cd $WEB_PATH;
 echo $PWD;
 whoami;
-tar -xvzf ./package.tgz;
+
+echo 'Extracting';
+tar -xzf ./package.tgz -C ./;
+echo 'Cleaning';
 rm ./package.tgz;
-source ./build_$TRAVIS_COMMIT/deploy/deploy.sh;
+echo 'Deploying';
+source ./$RESULT_DIR/deploy/deploy.sh;
 EOF
