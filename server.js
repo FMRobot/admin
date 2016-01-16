@@ -2,8 +2,7 @@
 
 require('dotenv').config({path: '../.env'});
 
-let passport = require('passport'),
-    express = require('express'),
+let express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     bodyParser = require('body-parser'),
@@ -125,7 +124,6 @@ app.get('/', function(req, res, next) {
         }
         res.status(401).end('Not in organization');
     });
-
 });
 
 // Показать приложение

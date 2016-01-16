@@ -6,6 +6,7 @@ gh-cache
 !.bowerrc
 
 
+.idea
 .DS_Store
 .DS_Store?
 ._*
