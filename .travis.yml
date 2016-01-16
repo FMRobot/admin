@@ -5,7 +5,6 @@ branches:
   - server
 
 install: true
-script: true
 before_deploy: chmod +x ./deploy/deploy.sh
 deploy: ./deploy/deploy.sh
 

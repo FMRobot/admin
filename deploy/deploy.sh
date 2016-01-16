@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Starting deployment"
 echo "Creating archive"
-echo "__"
+echo ""
 
 mkdir build_$TRAVIS_COMMIT
 if [ $? != 0 ]; then
