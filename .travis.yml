@@ -7,13 +7,10 @@ addons:
   apt:
     packages:
     - sshpass
-before_install:
-- npm install -g webpack
 install:
 - npm install
-after_install:
-- webpack
 script:
+- webpack
 - chmod +x ./deploy/deploy.sh
 after_script: ./deploy/deploy.sh
 env:
