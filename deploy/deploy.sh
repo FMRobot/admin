@@ -3,9 +3,7 @@
 export RESULT_DIR=admin.server.$TRAVIS_BUILD_NUMBER
 export SSHPASS=$SSH_PASS
 
-echo "Starting deployment"
-echo
-echo ""
+echo "Starting deploy"
 
 mkdir $RESULT_DIR
 if [ $? != 0 ]; then
@@ -52,7 +50,7 @@ fi
 cd $RESULT_DIR;
 npm install;
 if [ $? != 0 ]; then
-    echo 'NPM INSTALL FAILED';
+    echo 'Npm install failed';
     quit;
 fi
 cd ..

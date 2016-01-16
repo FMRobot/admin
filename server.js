@@ -10,7 +10,7 @@ let express = require('express'),
     github = require('octonode'),
     request = require('request'),
     path = require('path'),
-    static_assets = serveStatic(path.join(__dirname, 'build')),
+    static_assets = serveStatic(path.join(__dirname, '../admin.frontend/')),
     http = require('http'),
     app = express();
 
@@ -130,7 +130,7 @@ app.get('/', function(req, res, next) {
 // Показать приложение
 app.get('/', function(req, res, next) {
     console.log('page');
-    res.sendFile(path.join(__dirname, 'build/index.html'));
+    res.sendFile(path.join(__dirname, '../admin.frontend/index.html'));
 });
 
 // Запускаем сервер
