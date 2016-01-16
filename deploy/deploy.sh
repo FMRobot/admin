@@ -11,7 +11,7 @@ if [ $? != 0 ]; then
 fi
 
 shopt -s extglob
-mv -vfR !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT
+mv -vf !(build$TRAVIS_COMMIT) ./build$TRAVIS_COMMIT
 if [ $? != 0 ]; then
     echo $?
     echo 'Can not move files'
