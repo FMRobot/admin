@@ -6,7 +6,7 @@ export ARCH_NAME=frontend.package.tgz
 export SYMLINK_NAME=admin.frontend
 
 mkdir $RESULT_DIR
-mv -vf ./build/* ./$RESULT_DIR
+mv -f ./build/* ./$RESULT_DIR
 tar -czf $ARCH_NAME $RESULT_DIR
 sshpass -e scp -C -o StrictHostKeyChecking=no $ARCH_NAME $SSH_USER@$SSH_IP:$WEB_PATH
 sshpass -e ssh -C $SSH_USER@$SSH_IP << EOF
