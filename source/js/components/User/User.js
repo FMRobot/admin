@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+
 let User = React.createClass({
     render: function () {
         return <article className="user" data-id="">

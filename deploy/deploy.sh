@@ -29,7 +29,7 @@ if [ $? != 0 ]; then
     exit
 fi
 
-sshpass -e scp -o StrictHostKeyChecking=no $ARCH_NAME $SSH_USER@$SSH_IP:$WEB_PATH
+sshpass -e scp -C -o StrictHostKeyChecking=no $ARCH_NAME $SSH_USER@$SSH_IP:$WEB_PATH
 
 if [ $? != 0 ]; then
     echo $?
@@ -37,7 +37,7 @@ if [ $? != 0 ]; then
     exit
 fi
 
-sshpass -e ssh $SSH_USER@$SSH_IP << EOF
+sshpass -e ssh -C $SSH_USER@$SSH_IP << EOF
 cd $WEB_PATH;
 echo 'Extracting';
 tar -xzf ./$ARCH_NAME -C ./;
