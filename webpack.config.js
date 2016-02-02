@@ -1,5 +1,11 @@
-var webpack = require('webpack')
-    path = require('path');
+var webpack = require('webpack'),
+    path    = require('path'),
+    imprt   = require('postcss-import'),
+    mixin   = require('postcss-mixins'),
+    vars    = require('postcss-simple-vars'),
+    nested  = require('postcss-nested'),
+    color   = require('postcss-color-function'),
+    autoprefixer = require('autoprefixer');
 
 module.exports = {
     debug: true,
@@ -17,19 +23,22 @@ module.exports = {
         moduleDirectories: ['node_modules', 'source', 'source/js', 'source/css'],
         extensions: ['', '.js', '.css']
     },
-    // plugins: [
-    //     new webpack.optimize.UglifyJsPlugin({
-    //         compress: {
-    //             warnings: false,
-    //             drop_console: true,
-    //             unsafe: true
-    //         }
-    //     })
-    // ],
+     plugins: [
+         new webpack.optimize.UglifyJsPlugin({
+             compress: {
+                 warnings: false,
+                 drop_console: true,
+                 unsafe: true
+             }
+         })
+     ],
     module: {
         loaders: [{
             test: /\.jade$/,
-            loader  : "jade-html-loader"
+            loader: "jade-html-loader"
+        }, {
+            test: /\.css$/,
+            loader: "style-loader!css-loader!postcss-loader"
         }, {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
@@ -38,5 +47,21 @@ module.exports = {
                 presets: ['react', 'es2015']
             }
         }]
+    },
+    postcss: function () {
+        return [
+            imprt,
+            mixin,
+            vars,
+            nested,
+            color,
+            autoprefixer({
+                browsers: [
+                    'last 2 version',
+                    'IE 9',
+                    'IE 10',
+                    'IE 11'
+                ]})
+        ];
     }
 };

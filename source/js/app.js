@@ -1,18 +1,18 @@
-let React = require('react'),
+import { createStore } from 'redux'
+
+let CSSreset = require('../helpers/reset.css'),
+    React = require('react'),
     ReactDOM = require('react-dom'),
     Router = require('react-router').Router,
     Route = require('react-router').Route,
     Link = require('react-router').Link,
-    ControlPanel = require('./components/ControlPanel/ControlPanel.js');
+    DashboardPage = require('./pages/Dashboard/Dashboard.js').default;
 
+
+let store = createStore(admin);
 
 ReactDOM.render((
     <Router>
-        <Route path="*" component={ControlPanel}/>
+        <Route path="*" component={DashboardPage}/>
     </Router>
 ), document.querySelector('.application'));
-
-//
-// ReactDOM.render(
-//     React.createElement("span", null, "Hello")
-//     , document.querySelector('.application'));

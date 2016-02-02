@@ -1,0 +1,7 @@
+@import "../../../helpers/colors.css";
+
+.header {
+    height: 100px;
+    background: $text;
+    color: $white;
+    }
