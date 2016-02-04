@@ -19,6 +19,7 @@
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.4",
     "history": "^1.13.1",
+    "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
     "jade-loader": "^0.8.0",
     "postcss-color-function": "^2.0.0",
