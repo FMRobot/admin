@@ -1,17 +1,18 @@
-import React, {Component} from 'react'
-let css = require('./Profile.css');
+import React, {Component} from 'react';
 
-class Profile extends React.Component {
-    render() {
-        return (
-            <section className="profile">
-                <p className="profile__name">
-                    <span className="profile__role"></span>
-                </p>
-                <a className="profile__logout" href="/logout/">Выход</a>
-            </section>
-        )
-    }
+import './Profile.css';
+
+class Profile extends Component {
+  render() {
+    return (
+      <section className="profile">
+        <p className="profile__name">
+          <span className="profile__role"/>
+        </p>
+        <a className="profile__logout" href="/logout/">Выход</a>
+      </section>
+    );
+  }
 }
 
 export default Profile;
