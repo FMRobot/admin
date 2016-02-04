@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "lint": "eslint source",
+    "lint": "eslint source && stylelint source/**/*.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anton Nemtsev",
@@ -42,6 +42,8 @@
     "babel-eslint": "^4.1.8",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.0",
-    "eslint-plugin-react": "^3.16.1"
+    "eslint-plugin-react": "^3.16.1",
+    "stylelint": "^4.2.0",
+    "stylelint-config-standard": "^3.0.0"
   }
 }
