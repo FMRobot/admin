@@ -1,14 +1,18 @@
-import React from 'react';
-import {Route, Router} from 'react-router';
-import {render} from 'react-dom';
+import { createStore } from 'redux'
 
-import DashboardPage from './pages/Dashboard/Dashboard.js';
-import '../helpers/reset.css';
+let CSSreset = require('../helpers/reset.css'),
+    React = require('react'),
+    ReactDOM = require('react-dom'),
+    Router = require('react-router').Router,
+    Route = require('react-router').Route,
+    Link = require('react-router').Link,
+    DashboardPage = require('./pages/Dashboard/Dashboard.js').default;
 
-const app = (
-  <Router>
-    <Route path="*" component={DashboardPage}/>
-  </Router>
-);
 
-render(app, document.querySelector('.application'));
+let store = createStore(admin);
+
+ReactDOM.render((
+    <Router>
+        <Route path="*" component={DashboardPage}/>
+    </Router>
+), document.querySelector('.application'));

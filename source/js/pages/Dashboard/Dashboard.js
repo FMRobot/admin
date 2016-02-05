@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-import Header from '../../components/Header/Header.js';
+let Header = require('../../components/Header/Header.js').default;
 
-class DashboardPage extends Component {
-  render() {
-    return (
-      <section className="page">
-        <Header/>
-      </section>
-    );
-  }
+class DashboardPage extends React.Component {
+    render() {
+        return (
+            <section className="page">
+                <Header/>
+            </section>
+        )
+    }
 }
 
-export default DashboardPage;
+export default DashboardPage
